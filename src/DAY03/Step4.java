@@ -31,14 +31,15 @@ public class Step4 { //cs
             System.out.println("재시험");
         }
         //        문제3 : 각 3개의 정수형으로 수를 입력받아 가장 큰 수를 출력 하시오. [ 전제조건 : 각 정수는 서로 다른 정수값 ]
-        System.out.print(" >> 정수 1 : ");
-        int int1 = scanner.nextInt();
-        System.out.print(" >> 정수 2 : ");
-        int int2 = scanner.nextInt();
-        System.out.print(" >> 정수 3 : ");
-        int int3 = scanner.nextInt();
+        System.out.print(" >> 정수 1 : ");  int int1 = scanner.nextInt();
+        System.out.print(" >> 정수 2 : ");  int int2 = scanner.nextInt();
+        System.out.print(" >> 정수 3 : ");  int int3 = scanner.nextInt();
 
-        int large = int1 > int2 && int1 > int3 ? int1 : int2 > int3 ? int2 : int3;
+        int large = 0;
+        if( int1 > int2 && int1 > int3 ){ large = int1; }
+        else if ( int2 > int3 ){large = int2; }
+        else{  large = int3; }
+
         System.out.println(" >> 가장 큰 수는 " + large + "입니다.");
 
 
