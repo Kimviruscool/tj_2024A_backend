@@ -6,7 +6,7 @@ public class Step4 { //cs
 
     public static void main(String[] args) { //ms
 
-
+        // 1~9문제확인 은  조건문문제9.txt 파일
         Scanner scanner = new Scanner(System.in);
 
         //문제1 : 점수를 정수형으로 입력받아 점수가 90점 이상이면 '합격' 아니면 '불합격' 출력 하시오.

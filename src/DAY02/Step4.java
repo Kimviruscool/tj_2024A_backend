@@ -76,6 +76,10 @@ public class Step4 { //cs
         System.out.println("|\"^\"`    |");
         System.out.println("||_/=\\\\__|");
 
+
+        // 실습1 : [백준문제] 콘솔에 개 모양 출력 방법2
+        //System.out.println("|\\_/| \n|q p|   /} \n( 0 )\"\"\"\\ \n|\"^\"`    | \n||_/=\\\\__|");
+
         // [콘솔 입력]
 
     } //ms

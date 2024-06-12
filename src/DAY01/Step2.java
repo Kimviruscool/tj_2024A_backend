@@ -10,6 +10,7 @@ public class Step2 { //class start //모든 코드는 class안에서만 작성�
         level = 10; //level 이라는 변수에 10을 대입 (= 대입 연산자)
         System.out.println(level); //level 변수 출력
 
+        //[p 46]
         int level2 = 10; //정수형 level2이름으로 변수 선언하며 10대입
         System.out.println(level2);
 

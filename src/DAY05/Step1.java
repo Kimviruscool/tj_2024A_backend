@@ -3,7 +3,7 @@ package DAY05;
 public class Step1 { //cs
 
     public static void main(String[] args) { //ms
-
+        //p.94
         int age = 7;
         if( age >= 8){ System.out.println("학교에다닙니다");}
         else {System.out.println("학교에 다니지 않습니다.");}
@@ -24,7 +24,7 @@ public class Step1 { //cs
         System.out.println("입장료는 "+charge+" 원입니다.");
         //2개의 결과물
 
-            //p 182
+            //p 102
             //swtich : 하나의 값을 비교할때 주로 , 논리[< , > , == 등] 비교 적합하지 않다.
             //break(키워드) : for , swtich 문에서 자주 사용되는 키워드
             //swtih에서 해당  case가 충족해서 실행될뙈 해당 switch 종료/탈출 할때 사용
