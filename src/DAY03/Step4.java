@@ -98,8 +98,8 @@ public class Step4 { //cs
         //   [ 처리출력 조건 ] 1분당 1000원으로 계산하여 사용요금' 0000원' 을 출력하시오,
         //      - 단 입차 시간 이전 으로 입력 할 경우에는 '출차시간 오류' 출력하시오.
         int inHour = 9; int inMinute = 30;
-        System.out.println(">> 출차시간_시간 : "); int outHour = scan.nextInt();
-        System.out.println(">> 출차시간_분 : ");   int outMinute = scan.nextInt();
+        System.out.println(">> 출차시간_시간 : "); int outHour = scanner.nextInt();
+        System.out.println(">> 출차시간_분 : ");   int outMinute = scanner.nextInt();
         int passedTime = (outHour*60 + outMinute) - (inHour*60 + inMinute);
         if (passedTime < 0) {
             System.out.println("출차시간 오류");
