@@ -140,18 +140,21 @@ public class Step3 {
         String html5 = "";
 
         for(int cLine = 1; cLine<= iLine4; cLine++){
-            //줄마다 공백출력
-            for(int blank = 1; blank <= iLine4 - cLine ; blank++){
-                html5 +=" ";
+            //공백 출력
+            for(int blank = 0; blank <= cLine - 1 ; blank++){
+                html5 += " ";
             }
-            //줄마다 별출력
-            for(int star1 = 1; star1 <= cLine*2-1; star1++){
+            //별 출력
+            for(int star = 0; star <= (iLine4 - cLine)*2 ; star++ ){
                 html5 += "*";
             }
-            //줄마다 줄바꿈
+            //줄바꿈
             html5 += "\n";
         }
         System.out.println(html5);
+
+        //[10]마름모
+
 
     } //me
 }
