@@ -14,7 +14,7 @@ public class Step6 {
         while (true){
             System.out.println("=====================================");
             System.out.println("1.예금 2.출금 3.잔고확인 4.종료");
-            System.out.println("메뉴 선택 : ");
+            System.out.println("메뉴 선택 : " );
             int ch = scanner.nextInt();
             if (ch == 1){
                 System.out.println("입금 금액 입력 : "); int ch1 = scanner.nextInt();
