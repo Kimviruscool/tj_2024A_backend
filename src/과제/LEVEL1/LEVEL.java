@@ -118,16 +118,58 @@ public class LEVEL {
 //        System.out.println("=================================");
 
         //1-8
-//        System.out.println(">> Level1_8 answer >>");
+        System.out.println(">> Level1_8 answer >>");
 //
-//        System.out.println("[1]작성자 : ");String people = scanner.next();
-//        System.out.println("[1]방문록 : ");String post = scanner.next();
-//        System.out.println("==========방문록==========");
-//        System.out.println("번호     작성자     방문록");
-//        System.out.println("1       "+ people + "     " + post);
-//        System.out.println("=========================");
-//        System.out.println("[2]작성자 : ");String people =  scanner.next();
-//        System.out.println("[2]방문록 : ");String post = scanner.next();
 
+          String header = "\n==========방문록==========\n번호 \t 작성자 \t 방문록\n";
+          String boardList = "";
+          String footer = "============================";
+          String output = "";
+
+        System.out.printf("[1]작성자 : ");output += scanner.next();
+        System.out.printf("[1]방문록 : ");boardList += scanner.next();
+        int number = 1;
+
+        System.out.println(header);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.println(footer);
+
+        System.out.printf("[2]작성자 : ");output += scanner.next();
+        System.out.printf("[2]방문록 : ");boardList += scanner.next();
+
+        System.out.println(header);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.println(footer);
+
+        System.out.printf("[3]작성자 : ");output += scanner.next();
+        System.out.printf("[3]방문록 : ");boardList += scanner.next();
+
+        System.out.println(header);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.println(footer);
+
+        System.out.printf("[4]작성자 : ");output += scanner.next();
+        System.out.printf("[4]방문록 : ");boardList += scanner.next();
+
+        System.out.println(header);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.println(footer);
+
+        System.out.printf("[5]작성자 : ");output += scanner.next();
+        System.out.printf("[5]방문록 : ");boardList += scanner.next();
+
+        System.out.println(header);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.printf("%d       %s    %s \n", number,output,boardList);
+        System.out.println(footer);
     }
 }

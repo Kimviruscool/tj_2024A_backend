@@ -1,5 +1,6 @@
 package 과제.LEVEL2;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Level2 {
@@ -29,6 +30,55 @@ public class Level2 {
         int korean = 89;
         int eng = 49;
         int math = 72;
+
+        int total = korean+eng+math;
+        float pg = (korean+eng+math)/3;
+
+        boolean x3 = total % 3 == 0;
+        boolean x8 = total % 8 == 0;
+
+        String hj = total % 2 == 0 ? "짝수" : "홀수";
+        String result1 = total == 65 ? "합격" : "불합격";
+
+
+        System.out.println("----------------------------------------------------------------- \n국어    영어    수학    합계    평균    3배수    8배수    홀짝    결과");
+        System.out.printf("%d     %d     %d     %d    %.0f    %b     %b     %s     %s \n", korean , eng, math, total , pg, x3, x8 , hj, result1);
+
+        //2-4
+
+        int random = new Random().nextInt(3);
+
+        if (random == 1){System.out.printf("가위");}
+        else if(random ==  2){System.out.printf("바위");}
+        else if(random == 3){System.out.printf("보");}
+
+        System.out.println("가위 바위 보 선택 : "); String player = scanner.next();
+
+        String computer = "";
+        if (random == 0){computer = "가위";}
+        else if(random ==  1){computer = "바위";}
+        else if(random == 2){computer = "보";}
+
+        System.out.printf("comran ) %s \n", computer);
+
+        if (player.equals("가위")){
+            if (computer.equals("보")){System.out.println("result player 승리");}
+            else if(computer.equals("바위")){System.out.println("result com 승리");}
+            else {System.out.println("비겼습니다.");}
+        }
+
+        if (player.equals("바위")){
+            if (computer.equals("가위")){System.out.println("result player 승리");}
+            else if(computer.equals("보")){System.out.println("result com 승리");}
+            else {System.out.println("비겼습니다.");}
+        }
+
+        if (player.equals("보")){
+            if (computer.equals("바위")){System.out.println("result player 승리");}
+            else if(computer.equals("가위")){System.out.println("result com 승리");}
+            else {System.out.println("비겼습니다.");}
+        }
+
 
 
 
