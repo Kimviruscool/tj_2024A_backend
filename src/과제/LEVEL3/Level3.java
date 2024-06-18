@@ -33,14 +33,40 @@ public class Level3 { //cs
         }
 
         //3-3
-        //뒤에 숫자4개를 날리고 "만원추가"
 
         int july1 = 3532100;
         int july2 = 9123700;
         int july3 = 5183400;
         int july4 = 11738700;
 
+        int a1 = july1 / 1000000;
+        int a2 = july2 / 1000000;
+        int a3 = july3 / 1000000;
+        int a4 = july4 / 1000000;
 
+        int b1 = july1 / 10000;
+        int b2 = july2 / 10000;
+        int b3 = july3 / 10000;
+        int b4 = july4 / 10000;
+
+        String j1 = "";
+        String j2 = "";
+        String j3 = "";
+        String j4 = "";
+
+
+        System.out.println("---------------7월 매출액------------------");
+        for (int i = 0; i<a1; i++){ j1 += " ■";}
+        System.out.printf("%s %d만원 \n",j1 ,b1);
+
+        for (int i = 0; i<a2; i++){ j2 += " ■";}
+        System.out.printf("%s %d만원 \n",j2 ,b2);
+
+        for (int i = 0; i<a3; i++){ j3 += " ■";}
+        System.out.printf("%s %d만원 \n",j3 ,b3);
+
+        for (int i = 0; i<a4; i++){ j4 += " ■";}
+        System.out.printf("%s %d만원 \n",j4 ,b4);
 
 
         //3-4

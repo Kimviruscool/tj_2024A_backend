@@ -27,7 +27,7 @@ public class LEVEL {
         System.out.println("double : " + a8);
 
         //1-2
-        System.out.printf(">> Level1_2 answer >>");
+        System.out.println(">> Level1_2 answer >>");
         System.out.println("type     value                            range");
         System.out.println("-----------------------------------------------");
         System.out.printf("boolean     %b                  true or false\n" , a1);
@@ -41,23 +41,23 @@ public class LEVEL {
 
         //1-3
         Scanner scanner = new Scanner(System.in);
-//        System.out.println(">> Level1_3 answer >>");
-//        System.out.print("input boolean : "); scanner.nextBoolean();
-//        System.out.print("input byte : "); scanner.nextByte();
-//        System.out.print("input char : "); scanner.next();
-//        System.out.print("input short : "); scanner.nextShort();
-//        System.out.print("input int : "); scanner.nextInt();
-//        System.out.print("input long : "); scanner.nextLong();
-//        System.out.print("input float : "); scanner.nextFloat();
-//        System.out.print("input double : "); scanner.nextDouble();
-//        System.out.println("input boolean : true");
-//        System.out.println("input byte : 100");
-//        System.out.println("input char : 'B' ");
-//        System.out.println("input short : 30000");
-//        System.out.println("input int : 200000000");
-//        System.out.println("input long : 200000000");
-//        System.out.println("input float : 3.12312312");
-//        System.out.println("input double : 3.123123123123");
+        System.out.println(">> Level1_3 answer >>");
+        System.out.print("input boolean : "); scanner.nextBoolean();
+        System.out.print("input byte : "); scanner.nextByte();
+        System.out.print("input char : "); scanner.next();
+        System.out.print("input short : "); scanner.nextShort();
+        System.out.print("input int : "); scanner.nextInt();
+        System.out.print("input long : "); scanner.nextLong();
+        System.out.print("input float : "); scanner.nextFloat();
+        System.out.print("input double : "); scanner.nextDouble();
+        System.out.println("input boolean : true");
+        System.out.println("input byte : 100");
+        System.out.println("input char : 'B' ");
+        System.out.println("input short : 30000");
+        System.out.println("input int : 200000000");
+        System.out.println("input long : 200000000");
+        System.out.println("input float : 3.12312312");
+        System.out.println("input double : 3.123123123123");
 
         //1-4
         System.out.println(">> Level1_4 answer >>");
@@ -94,28 +94,28 @@ public class LEVEL {
 
         //1-7
 
-//        System.out.println(">> Level1_7 answer >>");
-//        System.out.println("회원명 String : " ); String name = scanner.next();
-//        System.out.println("상태 boolean : "); boolean bl = scanner.nextBoolean();
-//        System.out.println("회원번호 byte : "); byte num = scanner.nextByte();
-//        System.out.println("성별 Char : "); char sex = scanner.next().charAt(0);
-//        System.out.println("나이 short : "); short age = scanner.nextShort();
-//        System.out.println("포인트 int : "); int point = scanner.nextInt();
-//        System.out.println("예금액 long : "); long money = scanner.nextLong();
-//        System.out.println("키 float : "); float height = scanner.nextFloat();
-//        System.out.println("몸무게 double : "); double weight = scanner.nextDouble();
-//
-//        System.out.println("==========회원 개인정보==========");
-//        System.out.println("|         회원명:" + name + "      |");
-//        System.out.println("|         회원명:" + b1 + "        |");
-//        System.out.println("|         회원명:" + num + "       |");
-//        System.out.println("|         회원명:" + sex + "       |");
-//        System.out.println("|         회원명:" + age + "       |");
-//        System.out.println("|         회원명:" + point + "     |");
-//        System.out.println("|         회원명:" + money + "     |");
-//        System.out.println("|         회원명:" + height + "    |");
-//        System.out.println("|         회원명:" + weight + "    |");
-//        System.out.println("=================================");
+        System.out.println(">> Level1_7 answer >>");
+        System.out.println("회원명 String : " ); String name = scanner.next();
+        System.out.println("상태 boolean : "); boolean bl = scanner.nextBoolean();
+        System.out.println("회원번호 byte : "); byte num = scanner.nextByte();
+        System.out.println("성별 Char : "); char sex = scanner.next().charAt(0);
+        System.out.println("나이 short : "); short age = scanner.nextShort();
+        System.out.println("포인트 int : "); int point = scanner.nextInt();
+        System.out.println("예금액 long : "); long money = scanner.nextLong();
+        System.out.println("키 float : "); float height = scanner.nextFloat();
+        System.out.println("몸무게 double : "); double weight = scanner.nextDouble();
+
+        System.out.println("==========회원 개인정보==========");
+        System.out.println("|         회원명:" + name + "      |");
+        System.out.println("|         회원명:" + b1 + "        |");
+        System.out.println("|         회원명:" + num + "       |");
+        System.out.println("|         회원명:" + sex + "       |");
+        System.out.println("|         회원명:" + age + "       |");
+        System.out.println("|         회원명:" + point + "     |");
+        System.out.println("|         회원명:" + money + "     |");
+        System.out.println("|         회원명:" + height + "    |");
+        System.out.println("|         회원명:" + weight + "    |");
+        System.out.println("=================================");
 
         //1-8
         System.out.println(">> Level1_8 answer >>");
