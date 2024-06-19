@@ -1,4 +1,4 @@
-package DAY08.Step1;
+package day08.my.Step1;
 
 import java.util.Arrays;
 
