@@ -19,8 +19,11 @@
     
     DDL(Data Definition Language) 데이터 정의어
     - 생성 :  create database '새로운DB명';
+		- crate table 새로운T명(); 테이블 생성
     - 삭제 : drop database '삭제할DB명'; / drop database if exists '삭제할DB명';
+		- drop table 삭제할T명; 테이블 삭제
     - show databases; 현재서버 DB목록 확인 / show variables like 'datadir' 데이터의로컬위치알려줌
+		-show tables; 테이블전체목록확인
     - use database '사용할DB명' DB사용(접속) DBSERVER, 사용할 DB선택
     
     
