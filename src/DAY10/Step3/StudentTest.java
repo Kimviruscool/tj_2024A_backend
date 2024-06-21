@@ -1,5 +1,7 @@
 package DAY10.Step3;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class StudentTest {
@@ -18,14 +20,56 @@ public class StudentTest {
 //        System.out.println("===========================================");
 //        studentKim.showStudentInfo();
 
+        ArrayList<Student> student = new ArrayList<>();
+
+        Student s1 = new Student(240201,"유재석");
+
         Scanner scanner = new Scanner(System.in);
 
         while(true){
             System.out.println("1.학생등록 2.점수등록 3.점수확인 4.학생삭제 | 선택 : "); int ch = scanner.nextInt();
-            if(ch == 1){}
-            if(ch == 2){}
-            if(ch == 3){}
-            if(ch == 4){}
+            if(ch == 1) {
+                System.out.println("학번 입력 : "); int number = scanner.nextInt();
+                System.out.println("이름 입력 : "); String name = scanner.next();
+                for (int i = 0; i < student.size(); i++) {
+                    if (number == student.get(i).studentID){
+                        Student news = new Student(number,name);
+                        student.add(news);
+                    } else {
+                        System.out.println("사용할수 없는 학번입니다.");
+                    }
+                }
+            }
+            if(ch == 2){
+                System.out.println("학번 입력 : "); int number = scanner.nextInt();
+                for (int i = 0 ; i < student.size(); i++){
+                    if(number != student.get(i).studentID) {
+                        System.out.println("과목명 : "); String classnames = scanner.next();
+                        System.out.println("점수 : "); int score = scanner.nextInt();
+                        student.get(i).addSubject(classnames,score);
+
+                    }
+                }
+            }
+            if(ch == 3){
+                System.out.println("학번 입력 : "); int number = scanner.nextInt();
+                for(int i = 0 ; i < student.size(); i++){
+                    if (number == student.get(i).studentID){
+                        student.get(i).showStudentInfo();
+                    } else {
+                        System.out.println("존재 하지 않는 학번 입니다.");
+                        break;
+                    }
+                }
+            }
+            if(ch == 4){
+                System.out.println("삭제할 학번 입력 : "); int delnum = scanner.nextInt();
+                for (int i = 0 ; i < student.size(); i++){
+                    if (delnum == student.get(i).studentID){
+
+                    }
+                }
+            }
             if(ch == 5){break;}
             else {System.out.println("사용할수 없는 번호입니다."); break;}
         }
