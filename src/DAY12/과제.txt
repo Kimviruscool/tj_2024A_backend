@@ -1,0 +1,9 @@
+Category Add , Category List : 구현 코드에서 사용되는 지역변수,static변수,멤버변수,객체 들이 저장되는 구역 찾기
+
+ex)지역변수 car
+인스턴스 : 객체
+static : speedUP
+
+위 함수에서 사용되는 코드들의 JVM 들의 구분 지어 ppt로 표현
+ArrayList포함
+
