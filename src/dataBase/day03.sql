@@ -162,12 +162,37 @@ drop table r;
 
 create table 카테고리(
 cno_pk int auto_increment,
-cname varchar(10)
+cname varchar(10),
+primary key(cno_pk)
 );
 
 create table 제품(
+jno_pk int auto_increment,
+jname varchar(15),
+jprice int,
+primary key(jno_pk),
+cno_fk int,
+foreign key(cno_fk) references 카테고리(cno_pk)
 );
 
-create table 주문();
+create table 주문(
+zcno_pk int auto_increment,
+zdate datetime default now(),
+primary key(zcno_pk)
+);
 
-create table 주문상세();
+create table 주문상세(
+scno_pk int auto_increment,
+samount int,
+primary key(scno_pk),
+jno_fk int,
+foreign key(jno_fk) references 제품(jno_pk),
+zsno_fk int,
+foreign key(zsno_fk) references 주문(zcno_pk)
+);
+
+#삭제
+drop table 카테고리;
+drop table 제품;
+drop table 주문코드;
+drop table 주문상세;
