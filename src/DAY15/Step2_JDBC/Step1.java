@@ -53,11 +53,20 @@ public class Step1 {
 
     - Connection 인터페이스 : DB와 연동 성공한 객체 정보를 가지고 조작/기능/메소드 제공 하는 인터페이스명
     - 추상메소드
-    - PreparedStatement : 반환
+    - PreparedStatement : 반환,업데이트준비
     - prepareStatement :
-    - excuteUpdate :
+    - excuteUpdate : 최신화
     -excuteQuery : select문의 문법을 시행하고 결과를result로 반환 해주는 함수
-    - ResultSet :
 
-    내부 구조
+         -내부 구조
+            ResultSet [null] --- .next() --->[첫번째 레코드]
+            -예시]
+                [name 필드]
+                신동엽   39
+                하하     42
+                유재석   79
+                1. ResultSet   .next()  ---> 첫번째 레코드 [name 필드]신동엽 [age]39    -- , getString("name") --> 신동엽
+                2. ResultSet   .next()  ---> 두번째 레코드 [name 필드]하하             -- , getString("name") --> 하하
+                3. ResultSet   .next()  ---> 세번째 레코드 [name 필드]유재석            -- , getInt("age") --> 39
+                4. ResultSet   .next()  ---> 없음. false                  , while(rs.next()){}
 */
