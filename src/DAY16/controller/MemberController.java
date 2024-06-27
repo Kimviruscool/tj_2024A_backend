@@ -11,6 +11,7 @@ public class MemberController {
 
     //1. 회원 화면 함수
     public boolean signup(MemberDTO memberDTO){
+        //아이디 중복검사
         System.out.println("MemberController.signup");
         boolean result = MemberDAo.mdao.signup(memberDTO);
         return result;
