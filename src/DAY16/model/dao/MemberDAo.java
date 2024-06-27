@@ -2,10 +2,8 @@ package DAY16.model.dao;
 
 import DAY16.model.dto.MemberDTO;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class MemberDAo {
 
@@ -49,10 +47,48 @@ public class MemberDAo {
         return false;
     }//se //매개변수 리턴값
     //2. 로그인 화면 함수
-    public void login(){} //le
+    public boolean login(MemberDTO memberDTO){
+        try {
+            String sql = "select * from member where mid = ? and mpwd = ? ";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, memberDTO.getMid());
+            ps.setString(2, memberDTO.getMpwd());
+
+            rs = ps.executeQuery(); //쿼리 실행후 결과를 rs로받는다
+            //6. 다음레코드 : 로그인 성공시 레코드는 1개 , 실패시 레코드는 0개
+            if (rs.next()) {return true;}//다음 레코드가 1개라도 존재하면 로그인 성공
+            } catch (Exception e) {System.out.println(e);}
+        return false;
+    } //le
     //3. 아이디찾기 화면 함수
-    public void findID(){} //fie
+    public ArrayList<String> findID(String mname , String mphone){
+        ArrayList<String> list = new ArrayList<>();
+
+        try {
+            String sql = "select * from member where mid = ? and mphone = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,mname);
+            ps.setString(2,mphone);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                list.add(rs.getString("mid"));
+            }
+        } catch (Exception e){System.out.println(e);}
+        return list;
+    } //fie
     //4. 비밀번호찾기 화면 함수
-    public void findPWD(){} //fpe
+    public String findPWD(MemberDTO memberDTO) {
+        try {
+            String sql = "select * from member where mid = ? and mphone = ? ";
+            ps.setString(1, memberDTO.getMid());
+            ps.setString(2, memberDTO.getMphone());
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                String findpwd = rs.getString("mpwd");
+                return findpwd;
+            } //해당 레코드의 필드명에 해당하는 필드값을 호출
+        } catch (Exception e) {System.out.println(e);}
+        return null;
+    } //fpe
 
 }
