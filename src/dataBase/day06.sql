@@ -60,33 +60,30 @@ select * from member;
 select * from board;
 select * from reply;
 
-delete from  
-
-insert into member(mid , mpwd, mname , mphone) values ('yjs','1234','유재석0','010-9999-8888');
-insert into member(mid , mpwd, mname , mphone) values ('yjs1','1234','유재석1','010-9999-8888');
-insert into member(mid , mpwd, mname , mphone) values ('yjs2','1234','유재석2','010-9999-8888');
-insert into member(mid , mpwd, mname , mphone) values ('yjs3','1234','유재석3','010-9999-8888');
-insert into member(mid , mpwd, mname , mphone) values ('yjs4','1234','유재석4','010-9999-8888');
-insert into member(mid , mpwd, mname , mphone) values ('yjs5','1234','유재석5','010-9999-8888');
+insert into member(mid , mpwd, mname , mphone) values ('yu1','1234','유재석0','010-9999-8888');
+insert into member(mid , mpwd, mname , mphone) values ('yu12','1234','유재석1','010-9999-8888');
+insert into member(mid , mpwd, mname , mphone) values ('yu123','1234','유재석2','010-9999-8888');
+insert into member(mid , mpwd, mname , mphone) values ('yu1234','1234','유재석3','010-9999-8888');
+insert into member(mid , mpwd, mname , mphone) values ('yu12345','1234','유재석4','010-9999-8888');
 
 
 
 insert into board(btitle, bcontent,mno) values ('글1','테스트1',1);
-insert into board(btitle, bcontent,mno) values ('글2','테스트2',7);
-insert into board(btitle, bcontent,mno) values ('글3','테스트3',8);
-insert into board(btitle, bcontent,mno) values ('글4','테스트4',9);
-insert into board(btitle, bcontent,mno) values ('글5','테스트5',10);
+insert into board(btitle, bcontent,mno) values ('글2','테스트2',2);
+insert into board(btitle, bcontent,mno) values ('글3','테스트3',3);
+insert into board(btitle, bcontent,mno) values ('글4','테스트4',4);
+insert into board(btitle, bcontent,mno) values ('글5','테스트5',5);
 
 insert into reply(rcontent, mno, bno) values ('댓글내용1',1,1);
-insert into reply(rcontent, mno, bno) values ('댓글내용2',7,7);
-insert into reply(rcontent, mno, bno) values ('댓글내용3',8,8);
-insert into reply(rcontent, mno, bno) values ('댓글내용4',9,9);
-insert into reply(rcontent, mno, bno) values ('댓글내용5',10,6);
+insert into reply(rcontent, mno, bno) values ('댓글내용2',2,2);
+insert into reply(rcontent, mno, bno) values ('댓글내용3',3,3);
+insert into reply(rcontent, mno, bno) values ('댓글내용4',4,4);
+insert into reply(rcontent, mno, bno) values ('댓글내용5',5,5);
 
 #검색
 #1. 전체검색
 select * from member;
-#2. 조건 
+#2. 조건 검색
 select * from member where mphone = '010-9999-8888';
 #아이디 찾기 (회원명가 연락처가 동일한 회원 검색)
 #비교연산자 : >초과 <미만 >= 이상 <=이하 =같다 !=같지않다,
