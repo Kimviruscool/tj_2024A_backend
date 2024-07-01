@@ -2,6 +2,7 @@
 drop database if exists testbase;
 create database testbase;
 
+use testbase;
 #테이블 테스트
 
 drop table if exists 계정;
@@ -11,6 +12,8 @@ drop table if exists 아이템;
 drop table if exists 사냥터;
 drop table if exists 스킬;
 drop table if exists 상점;
+drop table if exists 가방;
+drop table if exists 장비;
 
 create table 계정(
 식별번호 int auto_increment,
@@ -28,14 +31,6 @@ create table 캐릭터(
 직업 int,
 체력 int,
 마나 int,
-가방1 int,
-가방2 int,
-가방3 int,
-가방4 int,
-장비1 int,
-장비2 int,
-장비3 int,
-장비4 int,
 보유금액 int,
 공격력 int,
 primary key(식별키),
@@ -81,10 +76,33 @@ primary key (식별번호)
 );
 create table 상점(
 식별번호 int auto_increment,
-상점이름 varchar(10), 
+상점이름 varchar(10),
 primary key(식별번호),
 아이템참조키 int,
 foreign key(아이템참조키) references 아이템(식별번호)
+);
+create table 가방(
+식별키 int auto_increment,
+가방1 int,
+가방2 int,
+가방3 int,
+가방4 int,
+가방5 int,
+가방6 int,
+가방7 int,
+가방8 int,
+가방9 int,
+가방10 int,
+primary key(식별키)
+);
+create table 장비(
+식별키 int auto_increment,
+장비1 int,
+장비2 int,
+장비3 int,
+장비4 int,
+무기1 int,
+primary key(식별키)
 );
 
 select * from 계정;
@@ -94,6 +112,8 @@ select * from 아이템;
 select * from 사냥터;
 select * from 스킬;
 select * from 상점;
+select * from 가방;
+select * from 장비;
 
 #테스트용
 insert into 계정(아이디,비밀번호,이름,전화번호,생년월일) values ('bc','1234','김병찬','010-9999-8888','010101');
@@ -103,3 +123,5 @@ insert into 아이템(아이템이름,아이템설명,수량) values ('물약','
 insert into 사냥터(이름) values ('초원');
 insert into 스킬(스킬이름,설명) values ('참격','참격을날립니다.');
 insert into 상점(상점이름) values ('마을상점');
+#가방 아이템 참조키로 아이템번호 참조
+#장비 아이템 참조키로 아이템번호 참조
