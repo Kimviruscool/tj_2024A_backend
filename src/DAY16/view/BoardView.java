@@ -3,6 +3,7 @@ package DAY16.view;
 import DAY16.controller.BoardController;
 import DAY16.controller.MemberController;
 import DAY16.model.dto.BoardDTO;
+import DAY16.model.dto.MemberDTO;
 //DAY16에 controller 패키지에 MemberController 호출
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -96,6 +97,15 @@ public class BoardView { //cs
         ArrayList<BoardDTO> result = BoardController.getInstance().bPrint();
 
         System.out.println(result);
+
+        System.out.println("번호\t조회수\t작성일\t\t\t\t제목");
+        result.forEach(dto -> { //리스트객체명.forEach(반복변수 -> {실행문;})
+            //리스트내 전체 dto 를 하나씩 반복변수에 대입 반복
+            System.out.printf("%2d\t%10s\t%10s\t%s \n", dto.getBno(),dto.getBinfo(), dto.getBdate(),dto.getBtitle());
+        });
+        System.out.println("0. 글쓰기 : 1~ : 개별글조회 : "); int ch = scan.nextInt();
+        if (ch == 0){bWrite();}
+        else if (ch >= 1){bView(ch);}
     }
     //bprint라는 게시판 출력 함수 선언
     // 모든글출력
@@ -105,10 +115,63 @@ public class BoardView { //cs
     //이유 : 글 1개당 레코드 1개 dto1개 모든글 dto여러개 > arraylist<dto>
 
     //5. 게시물 쓰기함수
-    
+    public void bWrite(){
+        //1. 입력받기
+        System.out.println("글 제목 입력 : "); String title = scan.next();
+        System.out.println("글 내용 입력 : "); String content = scan.next();
+        //2. 객체화 //입력받은 값들을 각 객체의 매개변수에 대입
+        BoardDTO boardDTO = new BoardDTO();
+
+        boardDTO.setBtitle(title);
+        boardDTO.setBcontent(content);
+        //3. 입력받은 객체를 컨트롤에게 전달후 결과 응답 받기
+        boolean result = BoardController.getInstance().bWrite(boardDTO);
+        if (result){
+            System.out.println("글작성 성공");
+        }else {
+            System.out.println("글작성 실패");
+        }
+
+    }
     //6. 게시물 개별조회 함수
-    
-    //7. 게시물 삭제 함수
-    
+    public void bView(int ch){
+        //-매개변수로 받은 선택받은 게시물의 번호를 컨트롤 에게 전달 후 해당 게시물 정보 받기
+        BoardDTO result = BoardController.getInstance().bView(ch);
+
+        if (result == null){
+            System.out.println("존재하지 않는 게시물");
+            return;
+        }
+        System.out.println("제목 : " + result.getBtitle());
+        System.out.println("작성자 : " + result.getBcontent());
+        System.out.println("작성일 : " + result.getBdate());
+        System.out.println("상세 : "+ result.getBinfo());
+        System.out.println("bno : " + result.getBno());
+        System.out.println("mno : " + result.getMno());
+        System.out.println(">> 1. 삭제 :  2. 수정 : ");
+        int ch1 = scan.nextInt();
+        if (ch1 == 1){bDelete(ch);}
+        else if(ch1 ==2 ){bUpdate(ch);}
+    }
+    //7. 게시물 삭제 함수 : 로그인한 회원과 작성자가 일치하면 삭제처리
+    public void bDelete(int bno){
+        boolean result = BoardController.getInstance().bDelete(bno);
+        if(result){System.out.println("삭제 성공");}
+        else {System.out.println("삭제 실패");}
+    }
     //8. 게시물 수정 함수
+    public void bUpdate(int bno){
+        System.out.println("새 제목 입력 : "); String newTitle = scan.next();
+        System.out.println("새 내용 입력 : "); String newContent = scan.next();
+
+        BoardDTO boardDTO = new BoardDTO();
+        boardDTO.setBtitle(newTitle);
+        boardDTO.setBcontent(newContent);
+        boardDTO.setBno(bno);
+
+        boolean result = BoardController.getInstance().bUpdate(boardDTO);
+
+        if (result){System.out.println("수정 성공");}
+        else {System.out.println("수정 실패");}
+    }
 } //class end

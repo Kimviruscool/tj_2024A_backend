@@ -6,7 +6,7 @@ import DAY16.model.dto.BoardDTO;
 import java.util.ArrayList;
 
 //패키지 day16에controller사용
-public class BoardController {
+public class BoardController { //cs
 //공개형 클래스 boardcontroller사용
 
     //===================싱글톤 만들기 =============================//
@@ -23,4 +23,32 @@ public class BoardController {
         //다오 에게 전체 게시물 조회 요청 후 결과를 반환
         return BoardDAO.getInstance().bPrint();
     }
-}
+
+    //6 . 개별 출력
+    public BoardDTO bView(int ch){
+        return BoardDAO.getInstance().bView(ch);
+    }
+
+    //7. 게시물 작성
+    public boolean bWrite(BoardDTO boardDTO){
+        //현재 로그인 된 회원번호를 대입하자
+        //- 매개변수로 전달받은 boardDTO에 현재 로그인된 회원번호를 대입
+        boardDTO.setMno(MemberController.mcontrol.loginMno);
+        //-(제목,내용,작성자번호)를 DAO에게 전달후 결과 받기.
+        return BoardDAO.getInstance().bWrite(boardDTO);
+
+    }
+
+    //8. 게시물 삭제
+    public boolean bDelete(int bno){
+        int mno = MemberController.mcontrol.loginMno;
+        return BoardDAO.getInstance().bDelete(bno, mno);
+    }
+
+    //9. 게시물 수정
+    public boolean bUpdate(BoardDTO boardDTO){
+        int mno = MemberController.mcontrol.loginMno;
+        return BoardDAO.getInstance().bUpdate(mno, boardDTO);
+    }
+    } //ce
+

@@ -65,4 +65,77 @@ public class BoardDAO {
             } //we
         }catch(Exception e){System.out.println(e);} return list; //여러개 담긴 DTo의 리스트를 변환
     }
+
+    //개별 출력
+    public BoardDTO bView(int ch){
+        try{ //예외처리
+            //sql작성
+            String sql = "select * from board where bno = ?";
+            //sql 기재
+            ps = conn.prepareStatement(sql);
+            //기재된 매개변수 대입
+            ps.setInt(1, ch);
+            //sql실행 후 결과 반환
+            rs = ps.executeQuery();
+            //결과에 따른 처리
+            if (rs.next()){
+                //현재 레코드들의 필드값 각 호출해서 생성자에 매개변수로 대입
+                String btitle = rs.getString("btitle");
+                String bcontent = rs.getString("bcontent");
+                String bdate = rs.getString("bdate");
+                String binfo = rs.getString("binfo");
+                int bno = rs.getInt("bno");
+                int mno = rs.getInt("mno");
+
+                //Dto 만들기
+                BoardDTO boardDTO = new BoardDTO(btitle,bcontent,bdate,binfo,bno,mno);
+
+//                System.out.println(boardDTO); //값들어옴 확인
+                return boardDTO;
+            }
+        }catch (Exception e){System.out.println(e);} return null;
+                                                    //오류/게시물 존재하지 않을시 null 반환
+    }
+
+    //7. 게시물 작성
+    public boolean bWrite(BoardDTO boardDTO){
+        try{//예외처리
+            //sql작성
+            String sql = "insert into board(btitle, bcontent,mno) values (?,?,?)";
+            ps = conn.prepareStatement(sql); //기재
+            ps.setString(1, boardDTO.getBtitle());
+            ps.setString(2, boardDTO.getBcontent());
+            ps.setInt(3,boardDTO.getMno());
+            int count = ps.executeUpdate(); //sql실행후 결과받기
+            if (count == 1 ){ //결과에 따른 처리 //insert 결과 레코드가 1개이면
+                return true;
+            }
+        }catch (Exception e){System.out.println(e);} return false;
+    }
+
+    //8. 게시물 삭제
+    public boolean bDelete(int bno, int mno){
+        try{
+            String sql = "delete from board where bno = ? and mno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,bno);
+            ps.setInt(2,mno);
+            int counts = ps.executeUpdate();
+            if (counts == 1) return true;
+        } catch (Exception e){System.out.println(e);} return false;
+    }
+
+    //9. 게시물 수정
+    public boolean bUpdate(int mno, BoardDTO boardDTO){
+        try{
+            String sql = "update board set btitle = ? , bcontent = ? where mno = ? and bno =?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,boardDTO.getBtitle());
+            ps.setString(2,boardDTO.getBcontent());
+            ps.setInt(3,mno);
+            ps.setInt(4,boardDTO.getBno());
+            int count = ps.executeUpdate();
+            if (count == 1)return true;
+        } catch (Exception e) {System.out.println(e);} return false;
+    }
 }
