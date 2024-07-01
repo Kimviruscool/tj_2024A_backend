@@ -134,7 +134,7 @@ insert into 몬스터(이름,체력,드랍금액,공격력) values ('스켈레�
 
 insert into 아이템(아이템이름,아이템설명) values ('물약','체력회복시필요합니다.');
 insert into 아이템(아이템이름,아이템설명) values ('갑옷','몸을보호하는 갑옷입니다.');
-insert into 아이템(아이템이름,아이템설명) values ('철칼','철칼입니다.',1);
+insert into 아이템(아이템이름,아이템설명) values ('철칼','철칼입니다.');
 
 insert into 사냥터(이름) values ('초원');
 insert into 사냥터(이름) values ('동굴');
