@@ -13,8 +13,18 @@ import java.util.Scanner;
 public class MemberView { //cs
     //공용 사용될 MemberVeiw 클래스 생성
     // 해당 클래스의 함수들을 다른 클래스에서 호출 할수 있도록 static 변수에 객체
+    // 전역 객체 > 모든 곳에서 호출 가능한 객체 1개 생성
+
     public static MemberView mview = new MemberView();
-    //공용 으로 사용될 Memberview클래스를 다른 클래스호출 가능하게 mview로 객채 생성
+    //private MeberView(){} // 생성자에 private한다 : 다른 클래스에서 new를 못한다. 안전성보장
+    //싱글톤 : 프로그램내 전역으로 하나의 객체를 생성
+    //언제 : 주로 전역에서 공유할때 사용
+
+    //static 선언시점 : 프로그램 시작시, static 초기화/사라짐 시점 : 종료시
+    //메소드를 실행하기 위해서는 객체 필요 static 메소드가 아닌이상
+    // - 멤버변수는 객체 마다 할당 , 메소드는 객체마다 실행되지만 코드(기능하는 방법) 는 공유
+    // - 객체 마다 메소드가 실행
+
     //멤버변수 : 입력객체
     Scanner scan = new Scanner(System.in);
     //Scanner 클래스를 사용하기위해 scan 객체 생성

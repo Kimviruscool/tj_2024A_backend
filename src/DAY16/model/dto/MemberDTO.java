@@ -1,6 +1,10 @@
 package DAY16.model.dto;
 //DAY16패키지에 모델패키지에 dto선언
 public class MemberDTO { //이동객체 //Data Transform
+    
+    //-DB테이블의 회원마다 레코드/행 1개 레코드/행 1개당 DTO 1개
+    //> 회원이 여러개이면 > DTOO가 여러개 > ARRAYLIST<MEMBERDTO> 사용 (싱글톤 사용안하는 이유 : 데이터가 여러개라서 운반이 해야되니까)
+
     //공개형 클래스인 MEMBERDTO선언
     //1. 멤버변수 -- DB필드와 동일 private 권장
     private String mid;

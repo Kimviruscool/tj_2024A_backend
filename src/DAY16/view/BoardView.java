@@ -1,7 +1,10 @@
 package DAY16.view;
 //DAY16패키지 view패키지 안내
+import DAY16.controller.BoardController;
 import DAY16.controller.MemberController;
+import DAY16.model.dto.BoardDTO;
 //DAY16에 controller 패키지에 MemberController 호출
+import java.util.ArrayList;
 import java.util.Scanner;
 //java패키지에 util패키지에 Scanner 호출
 public class BoardView { //cs
@@ -88,6 +91,24 @@ public class BoardView { //cs
         //그게아니면 탈퇴실패 메세지 출력후 return 값 false 반환
     }//mde
     //4. 게시판(게시물 전체출력) 함수
-    public void bPrint (){}
+    public void bPrint (){
+        //컨트롤러에게 전체 게시물 조회 요청
+        ArrayList<BoardDTO> result = BoardController.getInstance().bPrint();
+
+        System.out.println(result);
+    }
     //bprint라는 게시판 출력 함수 선언
+    // 모든글출력
+    //매개변수 : X 리턴 : 전체 게시물(boardDTO(arrayList))
+    //개별출력
+    //매개변수 : 개별 게시물번호 리턴 : BoradDTO 한개
+    //이유 : 글 1개당 레코드 1개 dto1개 모든글 dto여러개 > arraylist<dto>
+
+    //5. 게시물 쓰기함수
+    
+    //6. 게시물 개별조회 함수
+    
+    //7. 게시물 삭제 함수
+    
+    //8. 게시물 수정 함수
 } //class end
