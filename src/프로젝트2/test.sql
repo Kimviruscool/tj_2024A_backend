@@ -93,7 +93,9 @@ create table 가방(
 가방8 int,
 가방9 int,
 가방10 int,
-primary key(식별키)
+primary key(식별키),
+참조키 int,
+foreign key(참조키) references 아이템(식별번호)
 );
 create table 장비(
 식별키 int auto_increment,
@@ -102,7 +104,9 @@ create table 장비(
 장비3 int,
 장비4 int,
 무기1 int,
-primary key(식별키)
+primary key(식별키),
+아이템참조 int,
+foreign key(아이템참조) references 아이템(식별번호)
 );
 
 select * from 계정;
@@ -117,11 +121,36 @@ select * from 장비;
 
 #테스트용
 insert into 계정(아이디,비밀번호,이름,전화번호,생년월일) values ('bc','1234','김병찬','010-9999-8888','010101');
+insert into 계정(아이디,비밀번호,이름,전화번호,생년월일) values ('bc1','1234','김병찬1','010-9999-8888','010101');
+insert into 계정(아이디,비밀번호,이름,전화번호,생년월일) values ('bc2','1234','김병찬2','010-9999-8888','010101');
+
 insert into 캐릭터(닉네임,체력,마나,보유금액,공격력) values ('카카오',100,100,30000,10);
+insert into 캐릭터(닉네임,체력,마나,보유금액,공격력) values ('오카카',100,100,30000,10);
+insert into 캐릭터(닉네임,체력,마나,보유금액,공격력) values ('네이버',100,100,30000,10);
+
 insert into 몬스터(이름,체력,드랍금액,공격력) values ('스켈레톤',100,5000,5);
-insert into 아이템(아이템이름,아이템설명,수량) values ('물약','체력회복시필요합니다.',1);
+insert into 몬스터(이름,체력,드랍금액,공격력) values ('스켈레톤1',100,5000,5);
+insert into 몬스터(이름,체력,드랍금액,공격력) values ('스켈레톤2',100,5000,5);
+
+insert into 아이템(아이템이름,아이템설명) values ('물약','체력회복시필요합니다.');
+insert into 아이템(아이템이름,아이템설명) values ('갑옷','몸을보호하는 갑옷입니다.');
+insert into 아이템(아이템이름,아이템설명) values ('철칼','철칼입니다.',1);
+
 insert into 사냥터(이름) values ('초원');
+insert into 사냥터(이름) values ('동굴');
+insert into 사냥터(이름) values ('용암');
+
 insert into 스킬(스킬이름,설명) values ('참격','참격을날립니다.');
+insert into 스킬(스킬이름,설명) values ('파이어볼','파이어볼 날립니다.');
+insert into 스킬(스킬이름,설명) values ('활쏘기','화살을 쏩니다.');
+
+
 insert into 상점(상점이름) values ('마을상점');
-#가방 아이템 참조키로 아이템번호 참조
-#장비 아이템 참조키로 아이템번호 참조
+
+insert into 가방(가방1,가방2,가방3,가방4,가방5) values (1,2,3,4,5);
+insert into 가방(가방1,가방2,가방3,가방4,가방5) values (1,2,3,4,5);
+insert into 가방(가방1,가방2,가방3,가방4,가방5) values (1,2,3,4,5);
+
+insert into 장비(장비1,장비2,장비3,장비4,무기1) values (1,1,1,3,2);
+insert into 장비(장비1,장비2,장비3,장비4,무기1) values (1,2,2,3,2);
+insert into 장비(장비1,장비2,장비3,장비4,무기1) values (1,1,1,1,2);
