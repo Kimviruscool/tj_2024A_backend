@@ -1,6 +1,5 @@
-package 프로젝트2.Controller;
+package 프로젝트2;
 
-import java.util.Random;
 import java.util.Scanner;
 
 class 캐릭터{
