@@ -32,7 +32,7 @@ public class CharacterView { //cs
         System.out.println(">>>> 캐릭터 생성 페이지 <<<<");
         System.out.println("닉네임 입력 : "); String nickname = scan.next();
 
-        CharacterDTO characterDTO = new CharacterDTO(nickname);
+        CharacterDTO characterDTO = new CharacterDTO(cnickname);
 
         boolean result = CharacterController.cController.createChar(characterDTO);
 
@@ -45,7 +45,7 @@ public class CharacterView { //cs
     public void joinGame(){
         System.out.println("캐릭터 닉네임 입력 : "); String nickname = scan.next();
 
-        CharacterDTO characterDTO = new CharacterDTO(nickname);
+        CharacterDTO characterDTO = new CharacterDTO(cnickname);
 
         boolean reslut = CharacterController.cController.joinGame(characterDTO);
 

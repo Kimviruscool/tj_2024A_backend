@@ -25,7 +25,7 @@ public class CharacterDAO { //cs
         try {
             String sql = "insert into mycharacter(cnickname) values (?)";
             ps = conn.prepareStatement(sql);
-            ps.setString(1, characterDTO.getNickname());
+            ps.setString(1, characterDTO.getCnickname());
             int count = ps.executeUpdate();
             if (count == 1){return true;}
         } catch (Exception e) {System.out.println(e);} return false;

@@ -1,41 +1,50 @@
 package 프로젝트2.Model.Dto;
 
-import 프로젝트2.View.CharacterView;
-
 public class CharacterDTO {
-    //이동객체 DTO생성
-    //1. 멤버변수
-    private String nickname;
+    //멤버변수
+    private  int ckey;
+    private String cnickname;
     private int chp;
-    private int cmp;
-    private int cmoney;
-    private int cdamage;
-    //2. 생성자
-    //기본생성자
+    private int akey;
+    //생성자
     public CharacterDTO(){}
-    //전체 생성자
-    public CharacterDTO(String nickname, int chp, int cmp, int cmoney, int cdamage) {
-        this.nickname = nickname;
+
+    public CharacterDTO(int ckey, String cnickname, int chp, int akey) {
+        this.ckey = ckey;
+        this.cnickname = cnickname;
         this.chp = chp;
-        this.cmp = cmp;
-        this.cmoney = cmoney;
-        this.cdamage = cdamage;
-    }
-    //필요 생성자
-
-    public CharacterDTO(String nickname) {
-        this.nickname = nickname;
+        this.akey = akey;
     }
 
-    //3. 메소드
+    //메소드
+    //toString
 
-    //3-1 getter & setter
-    public String getNickname() {
-        return nickname;
+    @Override
+    public String toString() {
+        return "CharacterDTO{" +
+                "ckey=" + ckey +
+                ", cnickname='" + cnickname + '\'' +
+                ", chp=" + chp +
+                ", akey=" + akey +
+                '}';
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    //getter setter
+
+    public int getCkey() {
+        return ckey;
+    }
+
+    public void setCkey(int ckey) {
+        this.ckey = ckey;
+    }
+
+    public String getCnickname() {
+        return cnickname;
+    }
+
+    public void setCnickname(String cnickname) {
+        this.cnickname = cnickname;
     }
 
     public int getChp() {
@@ -46,40 +55,11 @@ public class CharacterDTO {
         this.chp = chp;
     }
 
-    public int getCmp() {
-        return cmp;
+    public int getAkey() {
+        return akey;
     }
 
-    public void setCmp(int cmp) {
-        this.cmp = cmp;
-    }
-
-    public int getCmoney() {
-        return cmoney;
-    }
-
-    public void setCmoney(int cmoney) {
-        this.cmoney = cmoney;
-    }
-
-    public int getCdamage() {
-        return cdamage;
-    }
-
-    public void setCdamage(int cdamage) {
-        this.cdamage = cdamage;
-    }
-
-    //3-2 toString
-
-    @Override
-    public String toString() {
-        return "CharacterDTO{" +
-                "nickname='" + nickname + '\'' +
-                ", chp=" + chp +
-                ", cmp=" + cmp +
-                ", cmoney=" + cmoney +
-                ", cdamage=" + cdamage +
-                '}';
+    public void setAkey(int akey) {
+        this.akey = akey;
     }
 }
