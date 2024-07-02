@@ -11,7 +11,7 @@ public class MenuView {
     //0 접속 성공 초기화면
     public void index2(){ //is
         while(true){ //ws
-            System.out.println("1. 캐릭터정보 2.던전 3.상점 4.종료");
+            System.out.println("1. 캐릭터정보 2.던전 3.스킬정보 4.종료");
             int ch = scan.nextInt();
 
             if(ch == 1){}

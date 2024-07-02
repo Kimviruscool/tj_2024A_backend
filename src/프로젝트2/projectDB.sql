@@ -34,13 +34,12 @@ foreign key(akey) references myaccount(akey)
 create table monster(
 mkey int auto_increment,
 mname varchar(20),
-mhp int default 100,
-mdamage int default 0,
 primary key(mkey)
 );
 create table dungeonDetail(
 dtkey int auto_increment,
 dname varchar(20),
+dlevel tinyint default 1,
 primary key(dtkey)
 );
 create table skill(
@@ -61,8 +60,10 @@ foreign key(skkey) references skill(skkey)
 create table dungeon(
 dgkey int auto_increment,
 mkey int,
+dtkey int,
 primary key(dgkey),
-foreign key(mkey) references monster(mkey)
+foreign key(mkey) references monster(mkey),
+foreign key(dtkey) references dungeonDetail(dtkey)
 );
 
 select * from myaccount;
