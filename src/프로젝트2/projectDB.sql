@@ -17,7 +17,7 @@ drop table if exists equipment;
 
 create table myaccount(
 akey int auto_increment,
-aid varchar(20),
+aid varchar(20) not null unique,
 apwd varchar(40),
 aname varchar(40),
 anum varchar(20),
@@ -27,11 +27,11 @@ primary key(akey)
 );
 create table mycharacter(
 ckey int auto_increment,
-cnickname varchar(20),
-chp int,
-cmp int,
-cmoney int,
-cdamage int,
+cnickname varchar(20) not null unique,
+chp int default 100,
+cmp int default 100,
+cmoney int default 0,
+cdamage int default 10,
 primary key(ckey),
 akey int,
 ikey int,
@@ -60,7 +60,11 @@ primary key(ikey)
 create table dungeon(
 dkey int auto_increment,
 dname varchar(20),
-primary key(dkey)
+primary key(dkey),
+mkey int,
+ckey int,
+foreign key(mkey) references monster(mkey),
+foreign key(ckey) references mycharacter(ckey)
 );
 create table skill(
 skkey int auto_increment,
@@ -118,9 +122,9 @@ insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc1','1234','김병찬1','010-9999-8888','010101');
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc2','1234','김병찬2','010-9999-8888','010101');
 
-insert into mycharacter(cnickname,chp,cmp,cmoney,cdamage) values ('카카오',100,100,30000,10);
-insert into mycharacter(cnickname,chp,cmp,cmoney,cdamage) values ('오카카',100,100,30000,10);
-insert into mycharacter(cnickname,chp,cmp,cmoney,cdamage) values ('네이버',100,100,30000,10);
+insert into mycharacter(cnickname,chp,cmp,cmoney,cdamage) values ('카카오',100,100,0,10);
+insert into mycharacter(cnickname,chp,cmp,cmoney,cdamage) values ('오카카',100,100,0,10);
+insert into mycharacter(cnickname,chp,cmp,cmoney,cdamage) values ('네이버',100,100,0,10);
 
 insert into monster(mname,mhp,mdropmoney,mdamage) values ('스켈레톤',100,5000,5);
 insert into monster(mname,mhp,mdropmoney,mdamage) values ('스켈레톤1',100,5000,5);
@@ -148,5 +152,3 @@ insert into bag(bag1,bag2,bag3,bag4,bag5) values (1,2,3,4,5);
 insert into equipment(eq1,eq2,eq3,eq4,wp1) values (1,1,1,3,2);
 insert into equipment(eq1,eq2,eq3,eq4,wp1) values (1,2,2,3,2);
 insert into equipment(eq1,eq2,eq3,eq4,wp1) values (1,1,1,1,2);
-
-delete 
