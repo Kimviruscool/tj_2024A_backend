@@ -156,7 +156,7 @@ public class BoardView { //cs
         int ch1 = scan.nextInt();
         if (ch1 == 1){bDelete(ch);}
         else if(ch1 ==2 ){bUpdate(ch);}
-        else if(ch1 == 3){rWrite();}
+        else if(ch1 == 3){rWrite(ch);}
     }
     //7. 게시물 삭제 함수 : 로그인한 회원과 작성자가 일치하면 삭제처리
     public void bDelete(int bno){
@@ -184,15 +184,25 @@ public class BoardView { //cs
         ArrayList<ReplyDTO> result =
         BoardController.getInstance().rPrint(bno);
 
-        System.out.println(result);
+        //리스트객체명.forEach(반복변수 > 실행문)
+        //리스트내 요소들을 순환
+        result.forEach(reply -> {
+            System.out.printf("%s %s %s \n",reply.getRcontent(), reply.getRdatet(), reply.getMno());
+        });
     }
 
     //10. 댓글 쓰기 함수
-    public void rWrite(){
+    public void rWrite(int bno){
         System.out.println("댓글 내용 입력 : "); String rwrite = scan.next();
 
         ReplyDTO replyDTO = new ReplyDTO();
+        replyDTO.setBno(bno);
         replyDTO.setRcontent(rwrite);
+        boolean result = BoardController.getInstance().rWrite(replyDTO);
+
+        if(result) {System.out.println("등록성공");}
+        else {System.out.println("등록 실패");}
+
 
 
     }

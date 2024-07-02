@@ -35,7 +35,7 @@ public class CharacterDAO { //cs
     public boolean joinGame(CharacterDTO characterDTO){
         try{
             String sql = "";
-        }catch (Exception e) {System.out.println(e);}
+        }catch (Exception e) {System.out.println(e);} return false;
     }
 
     //3. 캐릭터삭제함수

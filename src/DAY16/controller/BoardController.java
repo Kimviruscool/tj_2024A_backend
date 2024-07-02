@@ -58,7 +58,10 @@ public class BoardController { //cs
     }
 
     //10. 댓글 쓰기 함수
-    public void rWrite(){}
+    public boolean rWrite(ReplyDTO replyDTO){
+        int mno = MemberController.mcontrol.loginMno;
+        return BoardDAO.getInstance().rWrite(replyDTO, mno);
+    }
 
     } //ce
 

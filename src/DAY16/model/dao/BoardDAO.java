@@ -149,11 +149,13 @@ public class BoardDAO {
         //여러개 DTo를 담을 리스트
         try{//예외처리
             String sql = "select * from reply where bno = ?;";
+            ps = conn.prepareStatement(sql);
             //sql문 생성
             ps.setInt(1,bno);
             //sql문 기재
             rs = ps.executeQuery();
             while(rs.next()){
+                System.out.println(rs.getString(2));
                 //-rs.get타입(필드명), rs.get타입(필드번호)
                 ReplyDTO replyDTO = new ReplyDTO(rs.getString(1),
                         rs.getString(2),rs.getInt(3),
@@ -166,6 +168,16 @@ public class BoardDAO {
     }
 
     //10. 댓글 쓰기 함수
-    public void rWrite(){}
+    public boolean rWrite(ReplyDTO replyDTO, int mno){ //rws
+        try{
+            String sql = "insert into reply(rcontent, mno, bno) values (?,?,?)";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, replyDTO.getRcontent());
+            ps.setInt(2,replyDTO.getBno());
+            ps.setInt(3,mno);
+            int count = ps.executeUpdate();
+            if (count == 1) return true;
+        }catch (Exception e){System.out.println(e);} return false;
+    } //rwe
 
 }
