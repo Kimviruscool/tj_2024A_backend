@@ -41,7 +41,7 @@ public class CharacterView { //cs
 
     } //CE
 
-    //2. 캐릭터 접속함수
+    //2. 캐릭터 접속함수 //캐릭터닉네임 입력하여 계정과 캐릭터이름 동일시 로그인
     public void joinGame(){
         System.out.println("캐릭터 닉네임 입력 : "); String nickname = scan.next();
 

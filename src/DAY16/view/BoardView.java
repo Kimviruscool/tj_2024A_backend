@@ -99,10 +99,10 @@ public class BoardView { //cs
 
         System.out.println(result);
 
-        System.out.println("번호\t조회수\t작성일\t\t\t\t제목");
+        System.out.println("번호\t조회수\t작성일\t\t\t\t제목\t작성자");
         result.forEach(dto -> { //리스트객체명.forEach(반복변수 -> {실행문;})
             //리스트내 전체 dto 를 하나씩 반복변수에 대입 반복
-            System.out.printf("%2d\t%10s\t%10s\t%s \n", dto.getBno(),dto.getBinfo(), dto.getBdate(),dto.getBtitle());
+            System.out.printf("%2d\t%10s\t%10s\t%s\t%s \n", dto.getBno(),dto.getBinfo(), dto.getBdate(),dto.getBtitle(),dto.getMid());
         });
         System.out.println("0. 글쓰기 : 1~ : 개별글조회 : "); int ch = scan.nextInt();
         if (ch == 0){bWrite();}
@@ -146,17 +146,18 @@ public class BoardView { //cs
         System.out.println("제목 : " + result.getBtitle());
         System.out.println("작성자 : " + result.getBcontent());
         System.out.println("작성일 : " + result.getBdate());
-        System.out.println("상세 : "+ result.getBinfo());
+        System.out.println("조회수 : "+ result.getBinfo());
         System.out.println("bno : " + result.getBno());
         System.out.println("mno : " + result.getMno());
         //-----------댓글 출력 ------------//
         rPrint(ch);
         //--------------------------------//
-        System.out.println(">> 1. 삭제  2. 수정 3. 댓글쓰기: ");
+        System.out.println(">> 1. 삭제  2. 수정 3. 댓글쓰기 4.뒤로가기 : ");
         int ch1 = scan.nextInt();
         if (ch1 == 1){bDelete(ch);}
         else if(ch1 ==2 ){bUpdate(ch);}
         else if(ch1 == 3){rWrite(ch);}
+        else if(ch1 == 4){bPrint();}
     }
     //7. 게시물 삭제 함수 : 로그인한 회원과 작성자가 일치하면 삭제처리
     public void bDelete(int bno){
@@ -187,12 +188,19 @@ public class BoardView { //cs
         //리스트객체명.forEach(반복변수 > 실행문)
         //리스트내 요소들을 순환
         result.forEach(reply -> {
-            System.out.printf("%s %s %s \n",reply.getRcontent(), reply.getRdatet(), reply.getMno());
+            System.out.printf("%s %s %s \n",reply.getRcontent(), reply.getRdatet(), reply.getMid());
         });
     }
 
     //10. 댓글 쓰기 함수
     public void rWrite(int bno){
+
+        //만약에 코드  상황상 로그인후 댓글쓰기가 아니였다면
+        //로그인 상태 확인후 댓글 쓰기 진행
+        if (!MemberController.mcontrol.loginState()){
+            System.out.println("로그인후 사용가능합니다");
+            return;
+        }
         System.out.println("댓글 내용 입력 : "); String rwrite = scan.next();
 
         ReplyDTO replyDTO = new ReplyDTO();
@@ -202,8 +210,8 @@ public class BoardView { //cs
 
         if(result) {System.out.println("등록성공");}
         else {System.out.println("등록 실패");}
-
-
-
     }
+
+    //11. 조회수 증가 처리
+
 } //class end

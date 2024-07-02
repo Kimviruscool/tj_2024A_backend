@@ -38,7 +38,7 @@ public class BoardDAO {
 
         try{
             //예외처리
-            String sql = "select * from board;";
+            String sql = "select * from board b inner join member m on b.mno = m.mno;";
             //1 . 기재
             ps = conn.prepareStatement(sql);
             //기재된 sql실행 하고 결과 반환
@@ -52,13 +52,13 @@ public class BoardDAO {
                 String btitle = rs.getString("btitle");
                 String bcontent = rs.getString("bcontent");
                 String bdate = rs.getString("bdate");
-                String binfo = rs.getString("binfo");
+                int binfo = rs.getInt("binfo");
                 int bno = rs.getInt("bno");
                 int mno = rs.getInt("mno");
 
                 //Dto 만들기
                 BoardDTO boardDTO = new BoardDTO(btitle,bcontent,bdate,binfo,bno,mno);
-
+                boardDTO.setMid(rs.getString("mid"));
                 //리스트에 dto 담기
                 list.add(boardDTO);
 
@@ -67,7 +67,7 @@ public class BoardDAO {
         }catch(Exception e){System.out.println(e);} return list; //여러개 담긴 DTo의 리스트를 변환
     }
 
-    //개별 출력
+    //6. 개별 출력
     public BoardDTO bView(int ch){
         try{ //예외처리
             //sql작성
@@ -84,7 +84,7 @@ public class BoardDAO {
                 String btitle = rs.getString("btitle");
                 String bcontent = rs.getString("bcontent");
                 String bdate = rs.getString("bdate");
-                String binfo = rs.getString("binfo");
+                int binfo = rs.getInt("binfo");
                 int bno = rs.getInt("bno");
                 int mno = rs.getInt("mno");
 
@@ -148,7 +148,8 @@ public class BoardDAO {
         ArrayList<ReplyDTO> list = new ArrayList<>();
         //여러개 DTo를 담을 리스트
         try{//예외처리
-            String sql = "select * from reply where bno = ?;";
+            String sql = "select * from reply r inner join member m on r.mno = m.mno where r.bno = ?";
+//                    "select * from board b inner join member m on board.mno = member.mno;";
             ps = conn.prepareStatement(sql);
             //sql문 생성
             ps.setInt(1,bno);
@@ -160,6 +161,10 @@ public class BoardDAO {
                 ReplyDTO replyDTO = new ReplyDTO(rs.getString(1),
                         rs.getString(2),rs.getInt(3),
                         rs.getInt(4),rs.getInt(5));
+
+                replyDTO.setMid(rs.getString(6));
+
+
             list.add(replyDTO);
             }
 
@@ -180,4 +185,14 @@ public class BoardDAO {
         }catch (Exception e){System.out.println(e);} return false;
     } //rwe
 
+    //11. 조회수 증가처리
+    public boolean viewIncrease(int bno){
+        try{
+            String sql = "update board set binfo = binfo +1 where bno = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1,bno);
+            int count = ps.executeUpdate();
+            if(count == 1)return true;
+        } catch(Exception e){System.out.println(e);} return false;
+    }
 }

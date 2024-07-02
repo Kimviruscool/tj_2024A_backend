@@ -27,6 +27,9 @@ public class BoardController { //cs
 
     //6 . 개별 출력
     public BoardDTO bView(int ch){
+
+        BoardDAO.getInstance().viewIncrease(ch);
+
         return BoardDAO.getInstance().bView(ch);
     }
 

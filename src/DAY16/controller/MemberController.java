@@ -32,7 +32,10 @@ public class MemberController { //cs
     //2-2로그아웃 함수
     public void logout(){loginMno = 0;}
     //logout 함수 생성후 초기값 0 설정
-
+    //2-3 로그인 상태 반환함수
+    public boolean loginState(){
+        return loginMno == 0 ? false : true;
+    }
     //2. 로그인 화면 함수
     public boolean login(MemberDTO memberDTO) { //ls
     //매개변수가 존재하는 login함수를 boolean타입으로 선언

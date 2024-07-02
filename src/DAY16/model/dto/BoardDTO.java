@@ -6,14 +6,18 @@ public class BoardDTO {
     private String btitle;
     private String bcontent;
     private String bdate;
-    private String binfo;
+    private int binfo;
     private int bno;
     private int mno;
+
+    private String mid;
+    public String getMid() {return mid;}
+    public void setMid(String mid){this.mid = mid;}
 
     //2. 생성자
     public BoardDTO(){}
 
-    public BoardDTO(String btitle, String bcontent, String bdate, String binfo, int bno, int mno) {
+    public BoardDTO(String btitle, String bcontent, String bdate, int binfo, int bno, int mno) {
         this.btitle = btitle;
         this.bcontent = bcontent;
         this.bdate = bdate;
@@ -48,11 +52,11 @@ public class BoardDTO {
         this.bdate = bdate;
     }
 
-    public String getBinfo() {
+    public int getBinfo() {
         return binfo;
     }
 
-    public void setBinfo(String binfo) {
+    public void setBinfo(int binfo) {
         this.binfo = binfo;
     }
 
