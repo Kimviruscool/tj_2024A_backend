@@ -29,9 +29,7 @@ cnickname varchar(20) not null unique,
 chp int default 100,
 primary key(ckey),
 akey int,
-skkey int,
-foreign key(akey) references myaccount(akey),
-foreign key(skkey) references skill(skkey)
+foreign key(akey) references myaccount(akey)
 );
 create table monster(
 mkey int auto_increment,
@@ -43,11 +41,7 @@ primary key(mkey)
 create table dungeonDetail(
 dtkey int auto_increment,
 dname varchar(20),
-primary key(dtkey),
-mkey int,
-ckey int,
-foreign key(mkey) references monster(mkey),
-foreign key(ckey) references mycharacter(ckey)
+primary key(dtkey)
 );
 create table skill(
 skkey int auto_increment,
@@ -62,13 +56,12 @@ ckey int,
 skkey int,
 primary key(mskey),
 foreign key(ckey) references mycharacter(ckey),
-foreign key(skil) references skill(skkey)
+foreign key(skkey) references skill(skkey)
 );
 create table dungeon(
 dgkey int auto_increment,
-ckey int,
 mkey int,
-foreign key(ckey) references mycharacter(ckey),
+primary key(dgkey),
 foreign key(mkey) references monster(mkey)
 );
 
@@ -78,7 +71,7 @@ select * from monster;
 select * from dungeonDetail;
 select * from skill;
 select * from Myskill;
-select * from dungeonDetail;
+select * from dungeon;
 
 #테스트용
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬','010-9999-8888','010101');
