@@ -8,8 +8,10 @@ use testbase;
 drop table if exists myaccount;
 drop table if exists mycharacter;
 drop table if exists monster;
-drop table if exists dungeon;
+drop table if exists dungeonDetail;
 drop table if exists skill;
+drop table if exists Myskill;
+drop table if exists dungeon;
 
 create table myaccount(
 akey int auto_increment,
@@ -38,10 +40,10 @@ mhp int default 100,
 mdamage int default 0,
 primary key(mkey)
 );
-create table dungeon(
-dkey int auto_increment,
+create table dungeonDetail(
+dtkey int auto_increment,
 dname varchar(20),
-primary key(dkey),
+primary key(dtkey),
 mkey int,
 ckey int,
 foreign key(mkey) references monster(mkey),
@@ -54,12 +56,29 @@ skinfo varchar(40),
 skdamage int default 0,
 primary key (skkey)
 );
+create table Myskill(
+mskey int auto_increment,
+ckey int,
+skkey int,
+primary key(mskey),
+foreign key(ckey) references mycharacter(ckey),
+foreign key(skil) references skill(skkey)
+);
+create table dungeon(
+dgkey int auto_increment,
+ckey int,
+mkey int,
+foreign key(ckey) references mycharacter(ckey),
+foreign key(mkey) references monster(mkey)
+);
 
 select * from myaccount;
 select * from mycharacter;
 select * from monster;
-select * from dungeon;
+select * from dungeonDetail;
 select * from skill;
+select * from Myskill;
+select * from dungeonDetail;
 
 #테스트용
 insert into myaccount(aid,apwd,aname,anum,abirth) values ('bc','1234','김병찬','010-9999-8888','010101');
@@ -74,11 +93,14 @@ insert into monster(mname,mhp,mdamage) values ('스켈레톤',100,5);
 insert into monster(mname,mhp,mdamage) values ('스켈레톤1',100,5);
 insert into monster(mname,mhp,mdamage) values ('스켈레톤2',100,5);
 
-insert into dungeon(dname) values ('초원');
-insert into dungeon(dname) values ('동굴');
-insert into dungeon(dname) values ('용암');
+insert into dungeonDetail(dname) values ('초원');
+insert into dungeonDetail(dname) values ('동굴');
+insert into dungeonDetail(dname) values ('용암');
 
-insert into skill(skname,skinfo) values ('참격','참격을날립니다.');
-insert into skill(skname,skinfo) values ('파이어볼','파이어볼 날립니다.');
-insert into skill(skname,skinfo) values ('활쏘기','화살을 쏩니다.');
+insert into skill(skname,skinfo,skdamage) values ('참격','참격을날립니다.',10);
+insert into skill(skname,skinfo,skdamage) values ('파이어볼','파이어볼 날립니다.',20);
+insert into skill(skname,skinfo,skdamage) values ('활쏘기','화살을 쏩니다.',30);
 
+insert into Myskill(ckey, skkey) values (1,2);
+
+insert into dungeonDetail(ckey, mkey) values (1,1);
