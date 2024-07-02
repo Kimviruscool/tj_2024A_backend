@@ -63,8 +63,10 @@ dname varchar(20),
 primary key(dkey),
 mkey int,
 ckey int,
+ikey int,
 foreign key(mkey) references monster(mkey),
-foreign key(ckey) references mycharacter(ckey)
+foreign key(ckey) references mycharacter(ckey),
+foreign key(ikey) references item(ikey)
 );
 create table skill(
 skkey int auto_increment,
