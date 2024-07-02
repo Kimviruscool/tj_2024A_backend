@@ -2,6 +2,7 @@ package DAY16.controller;
 
 import DAY16.model.dao.BoardDAO;
 import DAY16.model.dto.BoardDTO;
+import DAY16.model.dto.ReplyDTO;
 
 import java.util.ArrayList;
 
@@ -50,5 +51,14 @@ public class BoardController { //cs
         int mno = MemberController.mcontrol.loginMno;
         return BoardDAO.getInstance().bUpdate(mno, boardDTO);
     }
+
+    //9. 댓글 전체 출력 함수
+    public ArrayList<ReplyDTO> rPrint(int bno){
+        return BoardDAO.getInstance().rPrint(bno);
+    }
+
+    //10. 댓글 쓰기 함수
+    public void rWrite(){}
+
     } //ce
 

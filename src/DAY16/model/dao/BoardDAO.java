@@ -1,6 +1,7 @@
 package DAY16.model.dao;
 
 import DAY16.model.dto.BoardDTO;
+import DAY16.model.dto.ReplyDTO;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -127,15 +128,44 @@ public class BoardDAO {
 
     //9. 게시물 수정
     public boolean bUpdate(int mno, BoardDTO boardDTO){
-        try{
+        try{//예외처리
             String sql = "update board set btitle = ? , bcontent = ? where mno = ? and bno =?";
+            //sql문 생성
             ps = conn.prepareStatement(sql);
+            //sql문 기재
             ps.setString(1,boardDTO.getBtitle());
             ps.setString(2,boardDTO.getBcontent());
             ps.setInt(3,mno);
             ps.setInt(4,boardDTO.getBno());
+            //값 대입
             int count = ps.executeUpdate();
             if (count == 1)return true;
         } catch (Exception e) {System.out.println(e);} return false;
     }
+
+    //9. 댓글 전체 출력 함수
+    public ArrayList<ReplyDTO> rPrint(int bno){
+        ArrayList<ReplyDTO> list = new ArrayList<>();
+        //여러개 DTo를 담을 리스트
+        try{//예외처리
+            String sql = "select * from reply where bno = ?;";
+            //sql문 생성
+            ps.setInt(1,bno);
+            //sql문 기재
+            rs = ps.executeQuery();
+            while(rs.next()){
+                //-rs.get타입(필드명), rs.get타입(필드번호)
+                ReplyDTO replyDTO = new ReplyDTO(rs.getString(1),
+                        rs.getString(2),rs.getInt(3),
+                        rs.getInt(4),rs.getInt(5));
+            list.add(replyDTO);
+            }
+
+
+        }catch (Exception e){System.out.println(e);} return list;
+    }
+
+    //10. 댓글 쓰기 함수
+    public void rWrite(){}
+
 }

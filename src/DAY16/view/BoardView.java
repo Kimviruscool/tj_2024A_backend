@@ -4,6 +4,7 @@ import DAY16.controller.BoardController;
 import DAY16.controller.MemberController;
 import DAY16.model.dto.BoardDTO;
 import DAY16.model.dto.MemberDTO;
+import DAY16.model.dto.ReplyDTO;
 //DAY16에 controller 패키지에 MemberController 호출
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -148,10 +149,14 @@ public class BoardView { //cs
         System.out.println("상세 : "+ result.getBinfo());
         System.out.println("bno : " + result.getBno());
         System.out.println("mno : " + result.getMno());
-        System.out.println(">> 1. 삭제 :  2. 수정 : ");
+        //-----------댓글 출력 ------------//
+        rPrint(ch);
+        //--------------------------------//
+        System.out.println(">> 1. 삭제  2. 수정 3. 댓글쓰기: ");
         int ch1 = scan.nextInt();
         if (ch1 == 1){bDelete(ch);}
         else if(ch1 ==2 ){bUpdate(ch);}
+        else if(ch1 == 3){rWrite();}
     }
     //7. 게시물 삭제 함수 : 로그인한 회원과 작성자가 일치하면 삭제처리
     public void bDelete(int bno){
@@ -173,5 +178,22 @@ public class BoardView { //cs
 
         if (result){System.out.println("수정 성공");}
         else {System.out.println("수정 실패");}
+    }
+    //9. 댓글 전체 출력 함수
+    public void rPrint(int bno){
+        ArrayList<ReplyDTO> result =
+        BoardController.getInstance().rPrint(bno);
+
+        System.out.println(result);
+    }
+
+    //10. 댓글 쓰기 함수
+    public void rWrite(){
+        System.out.println("댓글 내용 입력 : "); String rwrite = scan.next();
+
+        ReplyDTO replyDTO = new ReplyDTO();
+        replyDTO.setRcontent(rwrite);
+
+
     }
 } //class end
