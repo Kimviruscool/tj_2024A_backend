@@ -54,7 +54,9 @@ public class MenuView {
             System.out.println("스킬이 없습니다.");
         }else {
             System.out.println();
-            result.forEach();
+            result.forEach(skillinfo -> {
+                System.out.printf();
+            });
         }
     }
 }

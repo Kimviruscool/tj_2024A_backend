@@ -2,6 +2,7 @@ package 프로젝트2.Controller;
 
 import 프로젝트2.Model.Dao.MenuDAO;
 import 프로젝트2.Model.Dto.CharacterDTO;
+import 프로젝트2.Model.Dto.MySkillDto;
 
 import java.util.ArrayList;
 
@@ -20,8 +21,8 @@ public static MenuController MController = new MenuController();
 
     }
     //3. 스킬정보 함수
-    public void skillinfo(){
-//        ArrayList<SkillDto> result = SkillDto
+    public ArrayList<SkillDto> skillinfo(){
+        return MenuDAO.MDAO.skillinfo(MySkillDto);
     }
 
 }
