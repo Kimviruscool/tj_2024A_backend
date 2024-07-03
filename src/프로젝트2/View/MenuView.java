@@ -1,6 +1,8 @@
 package 프로젝트2.View;
 
+import DAY16.controller.MemberController;
 import 프로젝트2.Controller.CharacterController;
+import 프로젝트2.Controller.MenuController;
 import 프로젝트2.Model.Dto.CharacterDTO;
 import 프로젝트2.Model.Dto.SkillDto;
 
@@ -19,7 +21,7 @@ public class MenuView {
             System.out.println("1. 캐릭터정보 2.던전 3.스킬정보 4.종료");
             int ch = scan.nextInt();
 
-            if(ch == 1){charinfo(ch);}
+            if(ch == 1){charinfo();}
             else if(ch == 2){godungeon();}
             else if(ch == 3){skillinfo();}
             else if(ch == 4){break;}
@@ -28,8 +30,17 @@ public class MenuView {
     } //ie
 
     //1. 캐릭터 정보 함수
-    public void charinfo(int bno){
-//        ArrayList<CharacterDTO> result = CharacterController.cController.
+    public void charinfo(){
+        ArrayList<CharacterDTO> result = MenuController.MController.charinfo();
+
+        if (result.isEmpty()){
+            System.out.println("없는 정보입니다.");
+        }else {
+            System.out.println("닉네임  HP");
+            result.forEach(charinfo ->{
+                System.out.printf("%s %d \n" ,charinfo.getCnickname(), charinfo.getChp() );
+            });
+        }
     }
     //2. 던전 메뉴 이동 함수
     public void godungeon(){
@@ -37,6 +48,13 @@ public class MenuView {
     }
     //3. 스킬정보 함수
     public void skillinfo(){
-//        ArrayList<SkillDto> result = SkillDto
+        ArrayList<SkillDto> result = MenuController.MController.skillinfo();
+
+        if (result.isEmpty()){
+            System.out.println("스킬이 없습니다.");
+        }else {
+            System.out.println();
+            result.forEach();
+        }
     }
 }
