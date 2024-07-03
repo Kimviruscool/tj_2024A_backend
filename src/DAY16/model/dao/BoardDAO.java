@@ -38,7 +38,7 @@ public class BoardDAO {
 
         try{
             //예외처리
-            String sql = "select * from board b inner join member m on b.mno = m.mno;";
+            String sql = "select * from board b inner join member m on b.mno = m.mno order by bdate desc;";
             //1 . 기재
             ps = conn.prepareStatement(sql);
             //기재된 sql실행 하고 결과 반환
@@ -194,5 +194,37 @@ public class BoardDAO {
             int count = ps.executeUpdate();
             if(count == 1)return true;
         } catch(Exception e){System.out.println(e);} return false;
+    }
+
+    //12 .제목 검색 함수
+    public ArrayList<BoardDTO> search(String search){
+        ArrayList<BoardDTO> list = new ArrayList<>();
+        try{
+//            String sql = "select * from board where btitle like '%글%' "; [o 직접설정]
+//            String sql = "select * from board where btitle like ? "; [? > "%" + search + "%" 사용]
+//            String sql = "select * from board where btitle like '%"+ search +"%' "; // [o 연결연산자]
+//            String sql = "select * from board where bno like %?% "; [x]
+//            String sql = "select * from board where bno like %3% "; [x]
+            String sql = "select * from board where btitle like CONCAT('%' , ? , '%')";
+            //[o] sql 제공하는 concat [문자열 , 문자열 , 문자열] 연결 함수
+            ps = conn.prepareStatement(sql);
+//            ps.setString(1,"%" + search + "%"); //[o]
+            ps.setString(1,search); //[x]
+//            ps.setInt(1,3); //[x]
+            rs = ps.executeQuery();
+            while(rs.next()){
+                String btitle = rs.getString("btitle");
+                String bcontent = rs.getString("bcontent");
+                String bdate = rs.getString("bdate");
+                int binfo = rs.getInt("binfo");
+                int bno = rs.getInt("bno");
+                int mno = rs.getInt("mno");
+
+                //Dto 만들기
+                BoardDTO boardDTO = new BoardDTO(btitle,bcontent,bdate,binfo,bno,mno);
+                //리스트에 dto 담기
+                list.add(boardDTO);
+            }
+        } catch (Exception e){System.out.println(e);} return list;
     }
 }

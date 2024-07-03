@@ -16,6 +16,10 @@ public class CharacterDTO {
         this.akey = akey;
     }
 
+    public CharacterDTO (String cnickname){
+        this.cnickname = cnickname;
+    }
+
     //메소드
     //toString
 

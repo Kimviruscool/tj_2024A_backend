@@ -1,5 +1,10 @@
 package 프로젝트2.View;
 
+import 프로젝트2.Controller.CharacterController;
+import 프로젝트2.Model.Dto.CharacterDTO;
+import 프로젝트2.Model.Dto.SkillDto;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MenuView {
@@ -14,15 +19,24 @@ public class MenuView {
             System.out.println("1. 캐릭터정보 2.던전 3.스킬정보 4.종료");
             int ch = scan.nextInt();
 
-            if(ch == 1){}
-            else if(ch == 2){}
-            else if(ch == 3){}
+            if(ch == 1){charinfo(ch);}
+            else if(ch == 2){godungeon();}
+            else if(ch == 3){skillinfo();}
             else if(ch == 4){break;}
             else {System.out.println("없는 기능 입니다.");}
         } //we
     } //ie
 
     //1. 캐릭터 정보 함수
+    public void charinfo(int bno){
+//        ArrayList<CharacterDTO> result = CharacterController.cController.
+    }
     //2. 던전 메뉴 이동 함수
-    //3. 상점 이동 함수
+    public void godungeon(){
+
+    }
+    //3. 스킬정보 함수
+    public void skillinfo(){
+//        ArrayList<SkillDto> result = SkillDto
+    }
 }

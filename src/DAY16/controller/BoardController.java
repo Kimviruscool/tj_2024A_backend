@@ -66,5 +66,10 @@ public class BoardController { //cs
         return BoardDAO.getInstance().rWrite(replyDTO, mno);
     }
 
+    //12 .제목 검색 함수
+    public ArrayList<BoardDTO> search(String search){
+        return BoardDAO.getInstance().search(search);
+    }
+
     } //ce
 

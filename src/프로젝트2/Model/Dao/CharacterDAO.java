@@ -1,8 +1,10 @@
 package 프로젝트2.Model.Dao;
 
+import DAY16.model.dto.BoardDTO;
 import 프로젝트2.Model.Dto.CharacterDTO;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class CharacterDAO { //cs
 
@@ -32,10 +34,15 @@ public class CharacterDAO { //cs
     } //cce
 
     //2. 캐릭터 접속함수
-    public boolean joinGame(CharacterDTO characterDTO){
+    public int joinGame(CharacterDTO characterDTO){
         try{
-            String sql = "";
-        }catch (Exception e) {System.out.println(e);} return false;
+            String sql = "select * from mycharacter where cnickname = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1,characterDTO.getCnickname());
+            rs = ps.executeQuery();
+
+            if (rs.next()){return rs.getInt("ckey");}
+        }catch (Exception e){System.out.println(e);} return 0;
     }
 
     //3. 캐릭터삭제함수
@@ -50,4 +57,7 @@ public class CharacterDAO { //cs
         }catch (Exception e){System.out.println(e);} return false;
     }
 
+    //4. 캐릭터 목록 함수
+    public void showChar(){}
+    //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
 } //ce

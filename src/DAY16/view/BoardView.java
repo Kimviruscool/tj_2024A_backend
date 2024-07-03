@@ -104,8 +104,9 @@ public class BoardView { //cs
             //리스트내 전체 dto 를 하나씩 반복변수에 대입 반복
             System.out.printf("%2d\t%10s\t%10s\t%s\t%s \n", dto.getBno(),dto.getBinfo(), dto.getBdate(),dto.getBtitle(),dto.getMid());
         });
-        System.out.println("0. 글쓰기 : 1~ : 개별글조회 : "); int ch = scan.nextInt();
-        if (ch == 0){bWrite();}
+        System.out.println("-1, 검색 0. 글쓰기 : 1~ : 개별글조회 : "); int ch = scan.nextInt();
+        if (ch == -1){search();}
+        else if (ch == 0){bWrite();}
         else if (ch >= 1){bView(ch);}
     }
     //bprint라는 게시판 출력 함수 선언
@@ -114,6 +115,22 @@ public class BoardView { //cs
     //개별출력
     //매개변수 : 개별 게시물번호 리턴 : BoradDTO 한개
     //이유 : 글 1개당 레코드 1개 dto1개 모든글 dto여러개 > arraylist<dto>
+
+    //12 .제목 검색 함수
+    public void search(){
+        System.out.println("찾을 제목 입력 : "); String search = scan.next();
+
+        ArrayList<BoardDTO> result = BoardController.getInstance().search(search);
+
+        System.out.println(result);
+
+        System.out.println("번호\t조회수\t작성일\t\t\t\t제목\t작성자");
+        result.forEach(dto -> { //리스트객체명.forEach(반복변수 -> {실행문;})
+            //리스트내 전체 dto 를 하나씩 반복변수에 대입 반복
+            System.out.printf("%2d\t%10s\t%10s\t%s\t%s \n", dto.getBno(),dto.getBinfo(), dto.getBdate(),dto.getBtitle(),dto.getMid());
+        });
+
+    }
 
     //5. 게시물 쓰기함수
     public void bWrite(){
