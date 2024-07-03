@@ -31,6 +31,8 @@ public class CharacterController {
     }
 
     //4. 캐릭터 목록 함수
-    public void showChar(){}
+    public void showChar(){
+        return CharacterDAO.characterDAO.showChar();
+    }
     //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
 }

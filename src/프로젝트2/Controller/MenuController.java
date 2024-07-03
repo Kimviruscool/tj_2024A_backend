@@ -21,8 +21,8 @@ public static MenuController MController = new MenuController();
 
     }
     //3. 스킬정보 함수
-    public ArrayList<SkillDto> skillinfo(){
-        return MenuDAO.MDAO.skillinfo(MySkillDto);
+    public ArrayList<MySkillDto> skillinfo(){
+        return MenuDAO.MDAO.skillinfo(CharacterController.cController.loginCno);
     }
 
 }

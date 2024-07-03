@@ -4,6 +4,7 @@ import DAY16.controller.MemberController;
 import 프로젝트2.Controller.CharacterController;
 import 프로젝트2.Controller.MenuController;
 import 프로젝트2.Model.Dto.CharacterDTO;
+import 프로젝트2.Model.Dto.MySkillDto;
 import 프로젝트2.Model.Dto.SkillDto;
 
 import java.util.ArrayList;
@@ -44,18 +45,22 @@ public class MenuView {
     }
     //2. 던전 메뉴 이동 함수
     public void godungeon(){
-
+        System.out.println("던전으로 이동합니다");
+        System.out.println("==========================");
+        ChoiceDungeonView.CDView.index3();
     }
     //3. 스킬정보 함수
     public void skillinfo(){
-        ArrayList<SkillDto> result = MenuController.MController.skillinfo();
+        ArrayList<MySkillDto> result = MenuController.MController.skillinfo();
 
         if (result.isEmpty()){
             System.out.println("스킬이 없습니다.");
         }else {
-            System.out.println();
+            System.out.println("스킬 이름 \t 스킬 설명 \t\t 스킬 데미지");
+            System.out.println("================================================");
             result.forEach(skillinfo -> {
-                System.out.printf();
+                System.out.printf("%s    \t%s\t%d \n", skillinfo.getSkname(), skillinfo.getSkinfo(), skillinfo.getSkdamage());
+                System.out.println("==================================================");
             });
         }
     }

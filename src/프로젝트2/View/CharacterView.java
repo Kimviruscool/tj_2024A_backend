@@ -3,6 +3,7 @@ package 프로젝트2.View;
 import 프로젝트2.Controller.CharacterController;
 import 프로젝트2.Model.Dto.CharacterDTO;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class CharacterView { //cs
@@ -75,6 +76,16 @@ public class CharacterView { //cs
 
     //4. 캐릭터 목록 함수
     public void showChar(){
+        ArrayList<CharacterDTO> result = CharacterController.cController.showChar();
+
+        if (result.isEmpty()){
+            System.out.println("보유하신 캐릭터가 없습니다.");
+        }else {
+            System.out.println("캐릭터목록");
+            result.forEach(showcha -> {
+                System.out.printf("");
+            });
+        }
         //매개변수 X 리턴값 계정키번호와 맞는 캐릭터 닉네임 출력
     }
 } //ce
